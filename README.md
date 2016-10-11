@@ -60,9 +60,9 @@ $docker run -p 9000:9000 -p 8000:8000 -t -i bamos/openface  /bin/bash
 
 From: https://cmusatyalab.github.io/openface/setup/
 
-$cd /root/openface \n
+$cd /root/openface /n
 $./run-tests.sh \n
-$./demos/compare.py images/examples/{lennon*,clapton*} \n
+$./demos/compare.py images/examples/{lennon*,clapton*} /n
 $./demos/classifier.py infer models/openface/celeb-classifier.nn4.small2.v1.pkl ./images/examples/carell.jpg \n
 $./demos/web/start-servers.sh \n
 
