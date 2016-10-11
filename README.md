@@ -40,6 +40,20 @@ This Dockerfile uses a prebuilt image with OpenCV, DLib, Torch. On top of that i
 
 To start with, create a Docker image with this Docker file and see where it takes you! 
 
+#git clone "this repo" (# git clone https://github.com/Immexxx/openface.git) 
+
+(To build the Docker image - use the following command. Tip: looks like this takes a long time. So, if you dont want to wait: ) 
+
+# docker build -t openface .
+
+(Try) 
+
+# docker pull bamos/openface (//Will pull the prebuilt image, instead of building it from the Dockerfile) 
+
+
+
+
+
 
 
 This research was supported by the National Science Foundation (NSF)
