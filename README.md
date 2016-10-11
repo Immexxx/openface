@@ -46,6 +46,8 @@ To start with, create a Docker image with this Docker file and see where it take
 
 #docker build -t openface .
 
+*Item 1
+
 (Alternatively, try - takes about ~ 10-15 mins for the build to complete) 
 
 #docker pull bamos/openface  
@@ -56,15 +58,78 @@ bamos/openface                                                      latest      
 
 Jump into that Docker image: 
 
+*Item 2
+
 $docker run -p 9000:9000 -p 8000:8000 -t -i bamos/openface  /bin/bash
 
 From: https://cmusatyalab.github.io/openface/setup/
 
-$cd /root/openface /n
-$./run-tests.sh \n
-$./demos/compare.py images/examples/{lennon*,clapton*} /n
-$./demos/classifier.py infer models/openface/celeb-classifier.nn4.small2.v1.pkl ./images/examples/carell.jpg \n
-$./demos/web/start-servers.sh \n
+$cd /root/openface
+$ ./data/download-lfw-subset.sh (Get test data) 
+
+*Item 3 
+
+$./run-tests.sh ( 7 tests. 3 Failures - as there was not data. Need to download data:$ ./data/download-lfw-subset.sh) 
+
+(This will take ~ 42 mins on a Macbook Pro) 
+
+*************
+root@954cc45ce676:~/openface# ./run-tests.sh 
+tests.openface_api_tests.test_pipeline ... ok
+tests.openface_batch_represent_tests.test_batch_represent ... ok
+tests.openface_demo_tests.test_compare_demo ... ok
+tests.openface_demo_tests.test_classification_demo_pretrained ... ok
+tests.openface_demo_tests.test_classification_demo_pretrained_multi ... ok
+tests.openface_demo_tests.test_classification_demo_training ... ok
+tests.openface_neural_net_training_tests.test_dnn_training ... ok
+
+*************
+
+Ran 7 tests in 2526.575s
+
+OK
+
+
+
+
+*Item 4
+
+$./demos/compare.py images/examples/{lennon*,clapton*} //Compares two images. Results look like: 
+
+Comparing images/examples/lennon-1.jpg with images/examples/lennon-2.jpg.
+  + Squared l2 distance between representations: 0.763
+Comparing images/examples/lennon-1.jpg with images/examples/clapton-1.jpg.
+  + Squared l2 distance between representations: 1.132
+  .....
+
+Code: https://github.com/Immexxx/openface/blob/master/demos/compare.py
+
+  
+*Item 5 
+
+$./demos/classifier.py infer models/openface/celeb-classifier.nn4.small2.v1.pkl ./images/examples/adams.jpg 
+
+/usr/local/lib/python2.7/dist-packages/sklearn/lda.py:4: DeprecationWarning: lda.LDA has been moved to discriminant_analysis.LinearDiscriminantAnalysis in 0.17 and will be removed in 0.19
+  "in 0.17 and will be removed in 0.19", DeprecationWarning)
+
+
+=== ./images/examples/adams.jpg ===
+Predict AmyAdams with 0.81 confidence.
+
+For carell.jpg: 
+
+=== ./images/examples/carell.jpg ===
+Predict SteveCarell with 0.97 confidence.
+
+Code: https://github.com/Immexxx/openface/blob/master/demos/classifier.py
+
+This "mode" does the infering and not the training. Running "infer" on the pic adams.jgp
+
+
+
+$./demos/web/start-servers.sh 
+
+
 
 
 
