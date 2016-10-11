@@ -30,6 +30,18 @@ deep neural networks.*
 
 ---
 
+KAR: 
+
+Setup: This Dockerfile has the "setup" 
+
+On OpenFace, the setup instructions point to Dockerhub - which has the contents of this file. 
+
+This Dockerfile uses a prebuilt image with OpenCV, DLib, Torch. On top of that image, it pulls in more things. 
+
+To start with, create a Docker image with this Docker file and see where it takes you! 
+
+
+
 This research was supported by the National Science Foundation (NSF)
 under grant number CNS-1518865.  Additional support
 was provided by the Intel Corporation, Google, Vodafone, NVIDIA, and the
