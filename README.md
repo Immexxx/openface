@@ -104,6 +104,8 @@ Comparing images/examples/lennon-1.jpg with images/examples/clapton-1.jpg.
 
 Code: https://github.com/Immexxx/openface/blob/master/demos/compare.py
 
+See: https://cmusatyalab.github.io/openface/demo-2-comparison/ for more info.
+
   
 *Item 5 
 
@@ -111,7 +113,6 @@ $./demos/classifier.py infer models/openface/celeb-classifier.nn4.small2.v1.pkl 
 
 /usr/local/lib/python2.7/dist-packages/sklearn/lda.py:4: DeprecationWarning: lda.LDA has been moved to discriminant_analysis.LinearDiscriminantAnalysis in 0.17 and will be removed in 0.19
   "in 0.17 and will be removed in 0.19", DeprecationWarning)
-
 
 === ./images/examples/adams.jpg ===
 Predict AmyAdams with 0.81 confidence.
@@ -125,11 +126,15 @@ Code: https://github.com/Immexxx/openface/blob/master/demos/classifier.py
 
 This "mode" does the infering and not the training. Running "infer" on the pic adams.jgp
 
+See: https://cmusatyalab.github.io/openface/demo-3-classifier/ for more information. 
 
+*Item 6 
 
 $./demos/web/start-servers.sh 
 
+Run the command above. Go to your browser, URL: http://localhost:8000 
 
+See https://www.youtube.com/watch?v=LZJOTRkjZA4 for instructions
 
 
 
