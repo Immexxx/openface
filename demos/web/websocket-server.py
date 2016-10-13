@@ -14,6 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#KAR: the magic file - magic part: 0.1 
+#/* 
+# Runs the server to receive the data (images?) on port 9000.  Once the images are there, does its magic.
+# Knows where everything is - directory paths. 
+
+
+#*/
+
 import os
 import sys
 fileDir = os.path.dirname(os.path.realpath(__file__))
