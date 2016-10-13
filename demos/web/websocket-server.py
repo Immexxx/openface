@@ -230,6 +230,7 @@ class OpenFaceServerProtocol(WebSocketServerProtocol):
         self.sendMessage(json.dumps(msg))
 
     def trainSVM(self):
+        #+ Training SVM on 23 labeled images. => when you take the set of all sampled images and give it to SVM 
         print("+ Training SVM on {} labeled images.".format(len(self.images)))
         d = self.getData()
         if d is None:
