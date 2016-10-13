@@ -60,7 +60,13 @@ Jump into that Docker image:
 
 *Item 2
 
-$docker run -p 9000:9000 -p 8000:8000 -t -i bamos/openface  /bin/bash
+
+NEW: $docker run -p 9000:9000 -p 8000:8000 -m 2g -c 2048 -t -i bamos/openface  /bin/bash
+
+
+OLD: $docker run -p 9000:9000 -p 8000:8000 -t -i bamos/openface  /bin/bash
+
+
 
 From: https://cmusatyalab.github.io/openface/setup/
 
