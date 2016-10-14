@@ -14,14 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#KAR: the magic file - magic part: 0.1 
-#/* 
-# Runs the server to receive the data (images?) on port 9000.  Once the images are there, does its magic.
-# Knows where everything is - directory paths. 
-
-
-#*/
-
 import os
 import sys
 fileDir = os.path.dirname(os.path.realpath(__file__))
@@ -50,6 +42,8 @@ from sklearn.decomposition import PCA
 from sklearn.grid_search import GridSearchCV
 from sklearn.manifold import TSNE
 from sklearn.svm import SVC
+from sklearn.externals import joblib
+
 
 import matplotlib as mpl
 mpl.use('Agg')
@@ -101,8 +95,9 @@ class OpenFaceServerProtocol(WebSocketServerProtocol):
         self.images = {}
         self.training = True
         self.people = []
-        self.svm = None
-        if args.unknown:
+        #self.svm = None
+        self.svm = joblib.load('learntFile.pkl') 
+	if args.unknown:
             self.unknownImgs = np.load("./examples/web/unknown.npy")
 
     def onConnect(self, request):
@@ -230,7 +225,6 @@ class OpenFaceServerProtocol(WebSocketServerProtocol):
         self.sendMessage(json.dumps(msg))
 
     def trainSVM(self):
-        #+ Training SVM on 23 labeled images. => when you take the set of all sampled images and give it to SVM 
         print("+ Training SVM on {} labeled images.".format(len(self.images)))
         d = self.getData()
         if d is None:
@@ -250,7 +244,7 @@ class OpenFaceServerProtocol(WebSocketServerProtocol):
                  'kernel': ['rbf']}
             ]
             self.svm = GridSearchCV(SVC(C=1), param_grid, cv=5).fit(X, y)
-
+            joblib.dump(self.svm, 'learntFile.pkl') 
     def processFrame(self, dataURL, identity):
         head = "data:image/jpeg;base64,"
         assert(dataURL.startswith(head))
