@@ -32,6 +32,23 @@ deep neural networks.*
 
 KAR: 
 
+#Quickstart
+
+
+***********************************
+docker run -p 9000:9000 -p 8000:8000 -m 2g -c 2048 -t -i bamos/openface /bin/bash
+
+cd root/openface/
+
+./data/download-lfw-subset.sh
+
+apt-get update 
+
+apt-get install vim 
+
+***********************************
+
+
 Setup: This Dockerfile has the "setup" 
 
 On OpenFace, the setup instructions point to Dockerhub - which has the contents of this file. 
