@@ -38,7 +38,7 @@ KAR:
 ***********************************
 docker run -p 9000:9000 -p 8000:8000 -m 2g -c 2048 -t -i bamos/openface /bin/bash
 
-cd root/openface/
+cd /root/openface/
 
 ./data/download-lfw-subset.sh
 
@@ -160,8 +160,14 @@ Run the command above. Go to your browser, URL: http://localhost:8000
 See https://www.youtube.com/watch?v=LZJOTRkjZA4 for instructions
 
 
+****************************************
+(Quick Start - already there. Remove this?) 
 
+docker run -p 9000:9000 -p 8000:8000 -m 3g -c 2048 -t -i bamos/openface /bin/bash
 
+docker exec -it aec81600c5cd  /bin/bash
+
+=> Build your own docker image (with VIM). Use that instead! Start in the night and get it done! 
 
 
 ****************************************
